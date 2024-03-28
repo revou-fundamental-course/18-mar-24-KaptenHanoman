@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas RevoU</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header class="header-wrapper">
+    <img class="mainpict" src="furitao.png">
+    <div class="company-name">
+        Flysenhower
+    </div>
+    <div class="menu">
+        <button id="homeBtn">Home</button>
+        <button id="packageBtn">Our Package</button>
+        <button>Call Us</button>
+    </div>
+</header>
+
+<div class="container" id="homePage">
+    <div class="container isian">
+        <div class="column preview">
+            <h2>Preview Page</h2>
+            <img id="slideshow" src="bali.jpg" alt="">
+            <div class="buttons">
+                <button onclick="prevImage()">Previous</button>
+                <button onclick="nextImage()">Next</button>
+            </div>
+            <div class="layanan">
+                <ol>
+                    <li>Comfortable vehicles</li>
+                    <li>Free dinner at the Hotel</li>
+                    <li>Free tour guide for a group tour</li>
+                </ol>
+            </div>
+        </div>
+        <div class="column personal-data">
+            <h2>Contact Us</h2>
+            <form id="contactForm" action="submit.php" method="post">
+                <p>Your Name</p>
+                <input type="text" id="nameInput" required>
+                <p>E-mail address</p>
+                <input type="email" id="emailInput" required>
+                <p>Package you are interested in</p>
+                <select name="pilihan" id="pilihan" required>
+                    <option value="bali">Bali Tour</option>
+                    <option value="singapore">Singapore Tour</option>
+                    <option value="japan">Japan Tour</option>
+                    <option value="surabaya">Surabaya Tour</option>
+                    <option value="bandung">Bandung Tour</option>
+                    <option value="semarang">Semarang Tour</option>
+                </select>
+                <button type="submit" class="kirim">Send</button>
+            </form>
+            <script>
+                document.getElementById("contactForm").addEventListener("submit", function(event) {
+                    event.preventDefault();
+                    var name = document.getElementById("nameInput").value;                    
+                    alert("Welcome " + name + " to our page. Enjoy our service");                    
+                });
+            </script>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="packagePage" style="display: none;">
+    <h1 class="judul">Our Package</h1>
+    <div class="container kotakan">
+        <div class="kolom cbali">
+            <h2>Bali Tour</h2>
+            <img src="bali.jpg" alt="">
+            <p>Starts From Rp 7.000.000</p>
+        </div>
+        <div class="kolom csingapore">
+            <h2>Singapore Tour</h2>
+            <img src="singapur.jpg" alt="">
+            <p>Starts From Rp 15.000.000</p>
+        </div>
+        <div class="kolom cjapan">
+            <h2>Japan Tour</h2>
+            <img src="jepun.jpeg" alt="">
+            <p>Starts From Rp 20.000.000</p>
+        </div>
+        <div class="kolom cbandung">
+            <h2>Bandung Tour</h2>
+            <img src="bandung.jpg" alt="">
+            <p>Starts From Rp 5.000.000</p>
+        </div>
+        <div class="kolom csurabaya">
+            <h2>Surabaya Tour</h2>
+            <img src="surabaya.jpg" alt="">
+            <p>Starts From Rp 4.500.000</p>
+        </div>
+        <div class="kolom csemarang">
+            <h2>Semarang Tour</h2>
+            <img src="semarang.jpg" alt="">
+            <p>Starts From Rp 3.000.000</p>
+        </div>
+    </div>
+    <h1 class="judul">Thank You For Using Our Service <br>Feel Free To Leave A Review</h1>
+</div>
+
+<script>
+function showHomePage() {
+    document.getElementById("homePage").style.display = "block";
+    document.getElementById("packagePage").style.display = "none";
+}
+
+function showPackagePage() {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("packagePage").style.display = "block";
+}
+
+document.getElementById("homeBtn").addEventListener("click", showHomePage);
+document.getElementById("packageBtn").addEventListener("click", showPackagePage);
+
+    const images = [
+        "bali.jpg",
+        "singapur.jpg",
+        "jepun.jpeg",
+        "surabaya.jpg",
+        "bandung.jpg",
+        "semarang.jpg"
+    ];
+    let currentImageIndex = 0;
+    const imageElement = document.getElementById('slideshow');
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+        imageElement.src = images[currentImageIndex];
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        imageElement.src = images[currentImageIndex];
+    }
+</script>
+
+</body>
+</html>
